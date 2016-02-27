@@ -16,7 +16,7 @@ if (Meteor.isClient) {
     var user_data = [
         {
             user:"Jason",
-            amount:"$10.00"
+            amount:"$-10.00"
         },
         {
             user: "Daniel",

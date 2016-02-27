@@ -17,7 +17,7 @@
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         {{#each groupRoutes}}
-            <a class="btn" href="{{path}}">{{name}}</a>
+            <a class="btn nav-btns" href="{{path}}">{{name}}</a>
         {{/each}}
     </div> <!-- /.container-fluid -->
   </nav> 
@@ -25,24 +25,26 @@
 
 <!-- Welcome text -->
 <template name="welcome">
-    <div class="container">
+    <div class="container welcome-container">
         <p>Fresno State's IEEE Snack Bar!</p>
     </div> <!-- Container -->
 </template>
 
 <!-- List of users -->
 <template name="user_list">
-    <div class="container">
+    <div class="container users-container">
+        <center>
         {{#each users}}
         <div class="col-xs-12 col-md-3" id="{{_id}}">
             <div>                
-                <div class="btn">           
-                    <h3>{{user}}</h3>
+                <div class="btn usr-btn">           
+                    <p>{{user}}</p>
                     <p>{{amount}}</p>
                 </div>
             </div>
             </div> <!-- / col -->
         {{/each}}
+        </center>
     </div>
 </template>
 
