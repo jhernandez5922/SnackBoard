@@ -13,6 +13,7 @@ publicRoutes.route('/', {
   },
   triggersExit: []
 })
+
 publicRoutes.route('/users', {
   name: 'Users',
   triggersEnter: [],

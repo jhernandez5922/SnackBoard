@@ -1,47 +1,47 @@
 <head>
-  <title>SnackBoard</title>
+    <title>SnackBoard</title>
 </head>
 
 <body>
 </body>
 
 <!-- Base Layout -->
-<template name = "ApplicationLayout">
-    {{> nav}}
-    {{> Template.dynamic template=header}}
-    {{> Template.dynamic template=main}}
+<template name="ApplicationLayout">
+    {{> nav}} {{> Template.dynamic template=header}} {{> Template.dynamic template=main}}
 </template>
 
 <!-- Nav bar -->
 <template name="nav">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        {{#each groupRoutes}}
-            <a class="btn" href="{{path}}">{{name}}</a>
-        {{/each}}
-    </div> <!-- /.container-fluid -->
-  </nav> 
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            {{#each groupRoutes}}
+            <a class="btn" href="{{path}}">{{name}}</a> {{/each}}
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 </template>
 
 <!-- Welcome text -->
 <template name="welcome">
     <div class="container">
         <p>Fresno State's IEEE Snack Bar!</p>
-    </div> <!-- Container -->
+    </div>
+    <!-- Container -->
 </template>
 
 <!-- List of users -->
 <template name="user_list">
     <div class="container">
         {{#each users}}
-        <div class="col-xs-12 col-md-3" id="{{_id}}">
-            <div>                
-                <div class="btn">           
+        <div class="col-xs-12 col-md-6" id="{{_id}}">
+            <div>
+                <div class="btn">
                     <h3>{{user}}</h3>
                     <p>{{amount}}</p>
                 </div>
             </div>
-            </div> <!-- / col -->
+        </div>
+        <!-- / col -->
         {{/each}}
     </div>
 </template>
@@ -49,16 +49,8 @@
 <!-- List of Menu items -->
 <template name="menu_items">
     <div class="container fullsize">
-        {{#each item}}
-        <div class="col-xs-12 col-md-3" id="{{_id}}">
-            <div>                
-                <div class="btn">           
-                    <h3>{{name}}</h3>
-                    <p>{{cost}}</p>
-                    <p>{{stock}}</p>
-                </div>
-            </div>
-            </div> <!-- / col -->
+        {{#each category}}
+            {{> item}}
         {{/each}}
     </div>
     <div id="footer">
@@ -69,19 +61,42 @@
 </template>
 
 <!-- Container for Users -->
-<template name = 'users'>
+<template name='users'>
     <div class="container">
         <h2>Users</h2>
     </div>
 </template>
 
 <!-- Not Used, but will be! -->
-<template name = 'settings'>
-  <div class='container'>
-      <div class="row">
-        <div class="col-sm-4">
-            <h2>Settings</h2>
+<template name='settings'>
+    <div class='container'>
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Settings</h2>
+            </div>
         </div>
     </div>
-  </div>
+</template>
+
+
+<template name = 'item'>
+    <div class="col-xs-12 col-md-12">
+        <h2 class="category">
+            <div class = "test_click">
+                    <img src="little_triangle.png"
+                    class="testRotate" name="testImg">
+                {{type}}
+            </div>
+            </h2>
+            {{#if editMode}} {{#each items}}
+        <div class="col-xs-12 col-md-3" id="{{_id}}">
+            <div class="btn">
+                <h3>{{name}}</h3>
+                <p>{{cost}}</p>
+                <p>{{stock}}</p>
+            </div>
+        </div>
+        <!--/col -->
+        {{/each}} {{/if}}
+    </div>
 </template>

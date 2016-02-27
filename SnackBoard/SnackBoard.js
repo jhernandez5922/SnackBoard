@@ -1,8 +1,16 @@
-Users = new Mongo.Collection('users');
-
+//Users = new Mongo.Collection('users');
 
 
 if (Meteor.isClient) {
+    
+    //get updates from server for groups collection
+    Meteor.subscribe("groups");
+    
+    
+    Template.item.created=function(){
+        this.editMode=new ReactiveVar(false);
+        this.rotate_factor = 0;
+    };
     
     //Helps set up navbar
     Template.registerHelper('groupRoutes', function () {
@@ -15,33 +23,30 @@ if (Meteor.isClient) {
     // User data 
     var user_data = [
         {
-            user:"Jason",
+            user:"Jason Hernandez",
             amount:"$10.00"
         },
         {
-            user: "Daniel",
+            user: "Daniel Harris",
             amount: "$0.01"
         },
         {
-            user:"Jason",
+            user:"Watson T",
             amount:"$10.00"
         },
         {
-            user: "Daniel",
+            user: "Kevin Ngo",
             amount: "$0.01"
-        },{
-            user:"Jason",
-            amount:"$10.00"
         },
         {
-            user: "Daniel",
+            user: "Jonathan Richards",
             amount: "$0.01"
         },{
-            user:"Jason",
+            user:"Rahul Nunna",
             amount:"$10.00"
         },
         {
-            user: "Daniel",
+            user: "Jonathan Meza",
             amount: "$0.01"
         },{
             user:"Jason",
@@ -55,39 +60,58 @@ if (Meteor.isClient) {
     //Menu data
     var menu_items = [
         {
-            name: "Muffin",
-            cost: "$1.00",
-            stock: "5"
-        },
+            type:"Soda", 
+            items: [{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },
+        ]},
         {
-            name: "Dr. Pepper",
-            cost: "$0.75",
-            stock: "2"
-        },
-        {
-            name: "Cheetos",
-            cost: "$0.50",
-            stock: "8"
-        },
-        {
-            name: "Ice Cream Pop",
-            cost: "$1.25",
-            stock: "1"
-        },
-        {
-            name: "Chicken Bake",
-            cost: "$3.25",
-            stock: "3"
-        }
+            type:"Chips",
+            items: [{
+                name: "Cheetos",
+                cost: "$0.50",
+                stock: "5"
+            }, 
+            {
+                name: "Pringles",
+                cost: "$0.75",
+                stock: "2"    
+            },
+        ]},
     ]
     //Port data to user list
     Template.user_list.helpers({users:user_data});
-    //Port data to menu list
-    Template.menu_items.helpers({item:menu_items});
     
+    //Port data to menu list
+    Template.menu_items.helpers(
+        {
+            category:menu_items
+        });
+        
+    Template.item.helpers({
+            editMode:function(){
+                return Template.instance().editMode.get();
+        }
+    })
+    Template.item.events = {
+        'click .test_click': function(event, template) {
+            var editMode = template.editMode.get();
+            template.editMode.set(!editMode);
+            console.log("it is now " + editMode);
+            this.rotate_factor += 1;
+            var rotate_angle = (90 * this.rotate_factor) % 360;
+            template.$('[name="testImg"]').rotate(rotate_angle);
+            }
+    }
 }
 if (Meteor.isServer) {
-  Meteor.startup(function () {
+    Meteor.startup(function () {});
     // code to run on server at startup
-  });
 }
