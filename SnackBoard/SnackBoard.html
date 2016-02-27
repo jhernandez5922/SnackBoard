@@ -1,15 +1,13 @@
 <head>
-  <title>SnackBoard</title>
+    <title>SnackBoard</title>
 </head>
 
 <body>
 </body>
 
 <!-- Base Layout -->
-<template name = "ApplicationLayout">
-    {{> nav}}
-    {{> Template.dynamic template=header}}
-    {{> Template.dynamic template=main}}
+<template name="ApplicationLayout">
+    {{> nav}} {{> Template.dynamic template=header}} {{> Template.dynamic template=main}}
 </template>
 
 <!-- Nav bar -->
@@ -27,7 +25,8 @@
 <template name="welcome">
     <div class="container welcome-container">
         <p>Fresno State's IEEE Snack Bar!</p>
-    </div> <!-- Container -->
+    </div>
+    <!-- Container -->
 </template>
 
 <!-- List of users -->
@@ -35,14 +34,16 @@
     <div class="container users-container">
         <center>
         {{#each users}}
-        <div class="col-xs-12 col-md-3" id="{{_id}}">
-            <div>                
-                <div class="btn usr-btn">           
+
+        <div class="col-xs-12 col-md-6" id="{{_id}}">
+            <div>
+                <div class="btn usr-btn">
                     <p>{{user}}</p>
                     <p>{{amount}}</p>
                 </div>
             </div>
-            </div> <!-- / col -->
+        </div>
+        <!-- / col -->
         {{/each}}
         </center>
     </div>
@@ -51,16 +52,8 @@
 <!-- List of Menu items -->
 <template name="menu_items">
     <div class="container fullsize">
-        {{#each item}}
-        <div class="col-xs-12 col-md-3" id="{{_id}}">
-            <div>                
-                <div class="btn">           
-                    <h3>{{name}}</h3>
-                    <p>{{cost}}</p>
-                    <p>{{stock}}</p>
-                </div>
-            </div>
-            </div> <!-- / col -->
+        {{#each category}}
+            {{> item}}
         {{/each}}
     </div>
     <div id="footer">
@@ -71,19 +64,41 @@
 </template>
 
 <!-- Container for Users -->
-<template name = 'users'>
+<template name='users'>
     <div class="container">
         <h2>Users</h2>
     </div>
 </template>
 
 <!-- Not Used, but will be! -->
-<template name = 'settings'>
-  <div class='container'>
-      <div class="row">
-        <div class="col-sm-4">
-            <h2>Settings</h2>
+<template name='settings'>
+    <div class='container'>
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Settings</h2>
+            </div>
         </div>
     </div>
-  </div>
+</template>
+
+
+<template name = 'item'>
+    <div class="col-xs-12 col-md-12">
+        <div class="category">
+                    <img src="little_triangle.png"
+                    class="testRotate" id="testImg">
+                {{type}}
+                <br />
+                   {{#if editMode}} {{#each items}}
+        <div class="col-xs-12 col-md-3" id="{{_id}}">
+            <div class="btn">
+                <h3>{{name}}</h3>
+                <p>{{cost}}</p>
+                <p>{{stock}}</p>
+            </div>
+        </div>
+        {{/each}} {{/if}}
+        </div>
+        <!--/col -->
+    </div>
 </template>

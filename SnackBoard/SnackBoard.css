@@ -48,8 +48,6 @@ div.welcome-container{
 }
 
 div.usr-btn{
-    width: 90%;
-    height: 80%;
     color: white;
     background-color: #006fb1;
     font-weight: bold;
@@ -59,23 +57,26 @@ div.usr-btn{
 div.usr-btn:visited{
     color: white;
     background-color: #006fb1;
-    font-weight: bold;
-    font-size: 20pt;
-    font-family: 'Times New Roman', Times, serif;
-}
+    }
 
 div.usr-btn:hover{
     color:  #006fb1;
     background-color:white;
-    font-size: 25pt;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 div.usr-btn:visited:hover{
     color:  #006fb1;
     background-color:white;
-    font-weight: bold;
-    font-size: 25pt;
-    font-family: 'Times New Roman', Times, serif;
+}
+.testRotate{
+  margin: 0px auto;
+  -moz-transition: transform 1s;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+}
+
+.testRotate:visited{
+  transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
 }
