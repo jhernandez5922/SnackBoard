@@ -17,8 +17,9 @@ if (Meteor.isClient) {
     // User data 
     var user_data = [
         {
-            user:"Jason Hernandez",
-            amount:"$10.00"
+
+            user:"Jason",
+            amount:"$-10.00"
         },
         {
             user: "Daniel Harris",
@@ -56,6 +57,96 @@ if (Meteor.isClient) {
         {
             type:"Soda", 
             items: [{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
+                name: "Pepsi",
+                cost: "$1.00",
+                stock: "5"
+            }, 
+            {
+                name: "Dr. Pepper",
+                cost: "$0.75",
+                stock: "2"    
+            },{
                 name: "Pepsi",
                 cost: "$1.00",
                 stock: "5"
@@ -106,14 +197,18 @@ if (Meteor.isClient) {
         
     })
     Template.item_category.events = {
-        'click .test_click': function(event, template) {
+        'click .category': function(event, template) {
             var editMode = template.editMode.get();
             template.editMode.set(!editMode);
             console.log("it is now " + editMode);
-            this.rotate_factor += 1;
-            var rotate_angle = (90 * this.rotate_factor) % 360;
-            var img = template.$("[name='testImg']")
-            console.log(img);
+            if(editMode)
+                template.$('.testRotate').css({/*"-ms-transform": "rotate(90deg)", /* IE 9 */
+                    /*"-webkit-transform": "rotate(90deg)", /* Chrome, Safari, Opera */
+                    "transform": "rotate(0deg)"});
+            else if(!editMode)
+               template.$('.testRotate').css({/*"-ms-transform": "rotate(270deg)", /* IE 9 */
+                    /*"-webkit-transform": "rotate(270deg)", /* Chrome, Safari, Opera */
+                    "transform": "rotate(90deg)"});
             }
     }
     

@@ -14,21 +14,28 @@
 
 <template name = 'item_category'>
     <div class="col-xs-12 col-md-12">
-        <h2 class="category test_click">
-            <img src="little_triangle.png" name="testImg">
+        <div class="category usr-btn">
+            <img src="little_triangle.png"
+            class="testRotate" id="testImg">
             {{type}}
-        </h2>
-            {{#if editMode}} 
-                {{#each items}}
+        </div>
+            <br />
+        <div class="snackbar">
+            <ul class="barview">
+            {{#if editMode}} {{#each items}}
+                <li class="barview">
                     {{> item}}
-                {{/each}} 
-            {{/if}}
+                </li>
+            {{/each}} {{/if}}
+            </ul>
+        </div>
+        <!--/col -->
     </div>
 </template>
 
 <template name = 'item'>
     <div class="col-xs-12 col-md-3" id="{{_id}}">
-        <div class="btn">
+        <div class="btn snack-btn">
             <h3>{{name}}</h3>
             <p>{{cost}}</p>
             <p>{{stock}}</p>
