@@ -95,13 +95,9 @@ if (Meteor.isClient) {
             template.editMode.set(!editMode);
             console.log("it is now " + editMode);
             if(editMode)
-                template.$('.testRotate').css({/*"-ms-transform": "rotate(90deg)", /* IE 9 */
-                    /*"-webkit-transform": "rotate(90deg)", /* Chrome, Safari, Opera */
-                    "transform": "rotate(0deg)"});
+                template.$('.testRotate').css({"transform": "rotate(0deg)"});
             else if(!editMode)
-               template.$('.testRotate').css({/*"-ms-transform": "rotate(270deg)", /* IE 9 */
-                    /*"-webkit-transform": "rotate(270deg)", /* Chrome, Safari, Opera */
-                    "transform": "rotate(90deg)"});
+               template.$('.testRotate').css({"transform": "rotate(90deg)"});
             }
     }
     
