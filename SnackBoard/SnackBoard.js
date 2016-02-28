@@ -61,6 +61,93 @@ if (Meteor.isClient) {
             amount: "$0.01"
         },
     ];
+    
+    var snacks = [
+        {
+            type: "Drinks",
+            items:[
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                    name: "Pepsi",
+                    price: "0.75",
+                    stock: "5"
+                }
+            ]},
+        {
+            type: "Snacks",
+            Items:[
+                {
+                    name: "chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                },
+                {
+                 name: "Chips",
+                    price: "0.75",
+                    stock: "5"
+                }
+            ]
+        }
+    ];
     //Port data to user list
     Template.user_list.helpers({users:user_data});
     
@@ -68,7 +155,7 @@ if (Meteor.isClient) {
     Template.menu_items.helpers(
         {
             category: function() {
-                return Menu.find({});
+                return snacks//Menu.find({});
             }
         });
         
@@ -94,10 +181,16 @@ if (Meteor.isClient) {
             var editMode = template.editMode.get();
             template.editMode.set(!editMode);
             console.log("it is now " + editMode);
-            if(editMode)
+            if(!editMode)
+            {
                 template.$('.testRotate').css({"transform": "rotate(0deg)"});
-            else if(!editMode)
-               template.$('.testRotate').css({"transform": "rotate(90deg)"});
+                template.$('.snackbar').css({"overflow-x": "scroll"});
+            }
+            else //if(!editMode)
+            {
+               template.$('.testRotate').css({"transform": "rotate(-90deg)"});
+               template.$('.snackbar').css({"overflow-x": "hidden"});
+            }
             }
     }
     
