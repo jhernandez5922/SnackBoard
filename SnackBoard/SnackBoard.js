@@ -131,6 +131,12 @@ if (Meteor.isClient) {
                     price: this.price,
                     stock: 1
                 });
+                $('.cart').css({
+                        "border-width": "3px",
+                        "border-style": "groove",
+                        "border-color": "black",
+                        "overflow-y": "scroll"
+                });
             }
             else {
                 for (var i = 0; i < cart.length; i++) {

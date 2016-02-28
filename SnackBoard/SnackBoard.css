@@ -136,3 +136,33 @@ div.users-container{
     font-size: 20pt;
     font-family: 'Times New Roman', Times, serif;    
 }
+
+#footer{
+    height: 35px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: space-between;
+        
+}
+
+.cart {
+    position: fixed;
+    width: 400px;
+    bottom: 35px;
+    left: 0px;
+    max-height: 500px;
+    overflow-y:hidden;
+    font-weight: bold;
+    color: #006fb1;
+    font-size: 17pt;
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+#checkout {
+    right:0px;
+    bottom:0px;
+    
+}
