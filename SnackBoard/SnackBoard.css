@@ -87,12 +87,6 @@ div.usr-btn:visited:hover{
     max-height: 250px;
 }
 
-.barview {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    display:inline;
-    list-style-type: none;
-}
 
 .snack-btn{
     width:100%;

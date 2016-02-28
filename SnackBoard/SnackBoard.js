@@ -81,13 +81,17 @@ if (Meteor.isClient) {
     )
     //Item Category Functions    
     Template.item_category.created=function(){
-        this.itemHide=new ReactiveVar(false);
+        this.itemHide=new ReactiveVar(true);
         this.rotate_factor = 0;
     };
         
     Template.registerHelper('cart', function(input){
         return Session.get('cart');
     });
+    
+    Template.registerHelper('cost', function(input) {
+        return Session.get('cost');
+    })
         
     Template.item_category.helpers({
         itemHide:function(){
@@ -100,16 +104,19 @@ if (Meteor.isClient) {
             var itemHide = template.itemHide.get();
             template.itemHide.set(!itemHide);
             console.log("it is now " + itemHide);
-            if(itemHide) {
+            if(!itemHide) {
                 template.$('.testRotate').css({/*"-ms-transform": "rotate(90deg)", /* IE 9 */
                     /*"-webkit-transform": "rotate(90deg)", /* Chrome, Safari, Opera */
                     "transform": "rotate(0deg)"});
+                     template.$('.snackbar').css({"overflow-x": "scroll"});
             }
-            else if(!itemHide)
+            else {
                template.$('.testRotate').css({/*"-ms-transform": "rotate(270deg)", /* IE 9 */
                     /*"-webkit-transform": "rotate(270deg)", /* Chrome, Safari, Opera */
-                    "transform": "rotate(90deg)"});
+                    "transform": "rotate(-90deg)"});
+                    template.$('.snackbar').css({"overflow-x": "hidden"});
             }
+        }
     }
     Template.item.events = {
         'click .purchase': function(event, template) {
@@ -150,6 +157,7 @@ if (Meteor.isClient) {
             var current = Number(this.price.replace(/[^0-9\.]+/g,""));
             
             Session.set('cost', (current + number).toFixed(2));
+            console.log(Session.get('cost'));
         }
     }
 }
