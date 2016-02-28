@@ -46,20 +46,6 @@
     </div>
 </template>
 
-<!-- List of Menu items -->
-<template name="menu_items">
-    <div class="container fullsize">
-        {{#each category}}
-            {{> item}}
-        {{/each}}
-    </div>
-    <div id="footer">
-        <button class="btn">
-            Checkout
-        </button>
-    </div>
-</template>
-
 <!-- Container for Users -->
 <template name='users'>
     <div class="container">
@@ -75,28 +61,5 @@
                 <h2>Settings</h2>
             </div>
         </div>
-    </div>
-</template>
-
-
-<template name = 'item'>
-    <div class="col-xs-12 col-md-12">
-        <h2 class="category">
-            <div class = "test_click">
-                    <img src="little_triangle.png"
-                    class="testRotate" name="testImg">
-                {{type}}
-            </div>
-            </h2>
-            {{#if editMode}} {{#each items}}
-        <div class="col-xs-12 col-md-3" id="{{_id}}">
-            <div class="btn">
-                <h3>{{name}}</h3>
-                <p>{{cost}}</p>
-                <p>{{stock}}</p>
-            </div>
-        </div>
-        <!--/col -->
-        {{/each}} {{/if}}
     </div>
 </template>

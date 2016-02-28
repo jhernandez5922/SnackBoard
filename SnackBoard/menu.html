@@ -1,0 +1,37 @@
+<!-- List of Menu items -->
+<template name="menu_items">
+    <div class="container fullsize">
+        {{#each category}}
+            {{> item_category}}
+        {{/each}}
+    </div>
+    <div id="footer">
+        <button class="btn">
+            Checkout
+        </button>
+    </div>
+</template>
+
+<template name = 'item_category'>
+    <div class="col-xs-12 col-md-12">
+        <h2 class="category test_click">
+            <img src="little_triangle.png" name="testImg">
+            {{type}}
+        </h2>
+            {{#if editMode}} 
+                {{#each items}}
+                    {{> item}}
+                {{/each}} 
+            {{/if}}
+    </div>
+</template>
+
+<template name = 'item'>
+    <div class="col-xs-12 col-md-3" id="{{_id}}">
+        <div class="btn">
+            <h3>{{name}}</h3>
+            <p>{{cost}}</p>
+            <p>{{stock}}</p>
+        </div>
+    </div>
+</template>

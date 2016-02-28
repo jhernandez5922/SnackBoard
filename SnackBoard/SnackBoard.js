@@ -5,13 +5,7 @@ if (Meteor.isClient) {
     
     //get updates from server for groups collection
     Meteor.subscribe("groups");
-    
-    
-    Template.item.created=function(){
-        this.editMode=new ReactiveVar(false);
-        this.rotate_factor = 0;
-    };
-    
+    Session.set('cost', 0);
     //Helps set up navbar
     Template.registerHelper('groupRoutes', function () {
     FlowRouter.watchPathChange()
@@ -95,20 +89,54 @@ if (Meteor.isClient) {
             category:menu_items
         });
         
-    Template.item.helpers({
-            editMode:function(){
-                return Template.instance().editMode.get();
+        
+        
+        
+    //Item Category Functions    
+    Template.item_category.created=function(){
+        this.editMode=new ReactiveVar(false);
+        this.rotate_factor = 0;
+    };
+    
+    Template.item_category.helpers({
+        editMode:function(){
+            return Template.instance().editMode.get();
         }
+        
+        
     })
-    Template.item.events = {
+    Template.item_category.events = {
         'click .test_click': function(event, template) {
             var editMode = template.editMode.get();
             template.editMode.set(!editMode);
             console.log("it is now " + editMode);
             this.rotate_factor += 1;
             var rotate_angle = (90 * this.rotate_factor) % 360;
-            template.$('[name="testImg"]').rotate(rotate_angle);
+            var img = template.$("[name='testImg']")
+            console.log(img);
             }
+    }
+    
+    Template.item.created=function() {
+        this.cart = []
+    }
+    Template.item.events = {
+        'click': function(event, template) {
+            //Add to cart
+            console.log(this.name);
+            console.log(this.cost);
+            console.log(this.stock);
+            template.cart.push({
+                name: this.name,
+                cost: this.cost,
+                stock: this.stock
+            });
+            var currency = this.cost;
+            var number = Number(currency.replace(/[^0-9\.]+/g,""));
+            var current = Session.get('cost');
+            Session.set('cost', current + number);
+            console.log(Session.get('cost'));
+        }
     }
 }
 if (Meteor.isServer) {
