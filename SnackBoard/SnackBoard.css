@@ -82,18 +82,42 @@ div.usr-btn:visited:hover{
 }
 
 .snackbar{
-    overflow: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
     width: 100%;
-    max-height: 180px;
+    max-height: 250px;
 }
 
 .barview {
+    overflow-x: scroll;
+    overflow-y: hidden;
     display:inline;
     list-style-type: none;
 }
 
 .snack-btn{
-    display: inline;
-    
+    width:100%;
+    text-align: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #006fb1;
+    background-color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: 'Times New Roman', Times, serif;    
+}
+
+
+.bottom-bar {
+    color: #006fb1;
+    background-color: white;
+    font-weight: bold;
+    font-size: 24pt;
+}
+
+.snack-container {
+    display: inline-block;
+    width: 30%;
+
 }

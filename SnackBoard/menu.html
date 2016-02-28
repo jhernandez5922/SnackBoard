@@ -6,14 +6,17 @@
         {{/each}}
     </div>
     <div id="footer">
-        <button class="btn">
+        <button class="btn bottom-bar">
             Checkout
+        </button>
+        <button class="btn bottom-bar">
+            Total $ {{cost}}
         </button>
     </div>
 </template>
 
 <template name = 'item_category'>
-    <div class="col-xs-12 col-md-12">
+    <div>
         <div class="category usr-btn">
             <img src="little_triangle.png"
             class="testRotate" id="testImg">
@@ -21,24 +24,22 @@
         </div>
             <br />
         <div class="snackbar">
-            <ul class="barview">
             {{#if editMode}} {{#each items}}
-                <li class="barview">
                     {{> item}}
-                </li>
             {{/each}} {{/if}}
-            </ul>
         </div>
         <!--/col -->
     </div>
 </template>
 
 <template name = 'item'>
-    <div class="col-xs-12 col-md-3" id="{{_id}}">
-        <div class="btn snack-btn">
-            <h3>{{name}}</h3>
-            <p>{{cost}}</p>
-            <p>{{stock}}</p>
+    <div class="card white darken-1 snack-container" id="{{_id}}">
+        <div class="card-content snack-btn">
+            {{name}}
+            <br />
+            <p>Price: {{price}}</p>
+            <p>In Stock: {{stock}}</p> 
+            <a class="waves-effect waves-light btn purchase">Purchase</a>
         </div>
     </div>
 </template>
