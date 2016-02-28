@@ -15,6 +15,7 @@ if (Meteor.isClient) {
     //get updates from server for groups collection
     Meteor.subscribe("items");
     Session.set('cost', 0);
+    Session.set('cart', []);
     //Helps set up navbar
     Template.registerHelper('groupRoutes', function () {
         FlowRouter.watchPathChange()
@@ -71,55 +72,84 @@ if (Meteor.isClient) {
                 return Menu.find({});
             }
         });
-        
+    Template.menu_items.events(
+        {
+            'click .total': function(event, template) {
+                template.$('.cart').toggle();
+            }
+        }
+    )
     //Item Category Functions    
     Template.item_category.created=function(){
-        this.editMode=new ReactiveVar(true);
-        this.cost = new ReactiveVar(false);
+        this.itemHide=new ReactiveVar(false);
         this.rotate_factor = 0;
     };
         
-    Template.registerHelper('cost', function(input){
-        return this.cost;
+    Template.registerHelper('cart', function(input){
+        return Session.get('cart');
     });
         
     Template.item_category.helpers({
-        editMode:function(){
-            return Template.instance().editMode.get();
+        itemHide:function(){
+            return Template.instance().itemHide.get();
         }
     })
     
     Template.item_category.events = {
         'click .category': function(event, template) {
-            var editMode = template.editMode.get();
-            template.editMode.set(!editMode);
-            console.log("it is now " + editMode);
-            if(editMode)
-                template.$('.testRotate').css({"transform": "rotate(0deg)"});
-            else if(!editMode)
-               template.$('.testRotate').css({"transform": "rotate(90deg)"});
+            var itemHide = template.itemHide.get();
+            template.itemHide.set(!itemHide);
+            console.log("it is now " + itemHide);
+            if(itemHide) {
+                template.$('.testRotate').css({/*"-ms-transform": "rotate(90deg)", /* IE 9 */
+                    /*"-webkit-transform": "rotate(90deg)", /* Chrome, Safari, Opera */
+                    "transform": "rotate(0deg)"});
+            }
+            else if(!itemHide)
+               template.$('.testRotate').css({/*"-ms-transform": "rotate(270deg)", /* IE 9 */
+                    /*"-webkit-transform": "rotate(270deg)", /* Chrome, Safari, Opera */
+                    "transform": "rotate(90deg)"});
             }
     }
-    
-    Template.item.created=function() {
-        this.cart = []
-    }
     Template.item.events = {
-        'click': function(event, template) {
+        'click .purchase': function(event, template) {
             //Add to cart
             console.log(this.name);
-            console.log(this.cost);
+            console.log(this.price);
             console.log(this.stock);
-            template.cart.push({
-                name: this.name,
-                cost: this.cost,
-                stock: this.stock
-            });
-            var currency = this.cost;
-            var number = Number(currency.replace(/[^0-9\.]+/g,""));
-            var current = this.cost;
-            Session.set('cost', current + number);
-            console.log(Session.get('cost'));
+            var cart = Session.get('cart');
+            if (cart.length == 0) {
+                cart.push({
+                    name: this.name,
+                    price: this.price,
+                    stock: 1
+                });
+            }
+            else {
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].name == this.name) {
+                        cart[i].stock += 1;
+                        break;
+                    }
+                    else if (i + 1 == cart.length) {
+                        cart.push({
+                            name: this.name,
+                            price: this.price,
+                            stock: 1
+                        });
+                        break;
+                    }
+                }
+            }
+            Session.set('cart', cart);
+            console.log(cart);
+            var currency = Session.get('cost');
+            var currencyString = JSON.stringify(currency);
+            var number = Number(currencyString.replace(/[^0-9\.]+/g,""));
+            
+            var current = Number(this.price.replace(/[^0-9\.]+/g,""));
+            
+            Session.set('cost', (current + number).toFixed(2));
         }
     }
 }

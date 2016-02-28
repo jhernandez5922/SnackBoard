@@ -79,12 +79,6 @@ div.usr-btn:visited:hover{
   transition: transform 1s;
 }
 
-.testRotate:visited{
-  transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-}
-
 .snackbar{
     overflow-x: scroll;
     overflow-y: hidden;
@@ -138,4 +132,13 @@ div.users-container{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.category {
+    width: 100%;
+    color: white;
+    background-color: #006fb1;
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: 'Times New Roman', Times, serif;    
 }

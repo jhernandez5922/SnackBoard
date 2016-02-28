@@ -5,26 +5,42 @@
             {{> item_category}}
         {{/each}}
     </div>
+    <div class="card white darken-1">
+        <div class="card-content cart">
+                <ul>
+                    {{#each cart}}
+                        <li>
+                            <p>{{name}}</p>
+                            Price: {{price}}
+                            Quantity: {{stock}}
+                        </li>
+                    {{/each}}
+                </ul>
+        </div>
+    </div>
     <div id="footer">
         <button class="btn bottom-bar">
             Checkout
         </button>
-        <button class="btn bottom-bar">
+        <button class="btn bottom-bar total">
             Total $ {{cost}}
         </button>
     </div>
+    
 </template>
+
+
 
 <template name = 'item_category'>
     <div>
-        <div class="category usr-btn">
+        <div class="category">
             <img src="little_triangle.png"
             class="testRotate" id="testImg">
             {{type}}
         </div>
             <br />
         <div class="snackbar">
-            {{#if editMode}} {{#each items}}
+            {{#if itemHide}}  {{#each items}}
                     {{> item}}
             {{/each}} {{/if}}
         </div>
