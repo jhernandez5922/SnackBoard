@@ -1,0 +1,26 @@
+<!-- List of Menu items -->
+<template name="AddItems">
+  <div class="new-item-container">
+    <h1 class = "add-item-title">
+      Add an Item
+    </h1>
+      {{> quickForm
+        collection="Menu"
+        id="insertMenuItem"
+        type="insert"
+        class="new-item"
+      }}
+  </div>
+  <div class="new-item-container">
+    <h1 class="add-item-title">
+      Add New Category
+    </h1>
+    {{> quickForm
+      collection="Type"
+      id="insertCategory"
+      type="insert"
+      class="new-item"
+    }}
+  </div>
+
+</template>

@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-a.nav-btns{
+/*a.nav-btns{
     color: white;
     background-color: #006fb1;
     font-weight: bold;
@@ -97,7 +97,7 @@ div.usr-btn:visited:hover{
     background-color: white;
     font-weight: bold;
     font-size: 20pt;
-    font-family: 'Times New Roman', Times, serif;    
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -134,7 +134,7 @@ div.users-container{
     background-color: #006fb1;
     font-weight: bold;
     font-size: 20pt;
-    font-family: 'Times New Roman', Times, serif;    
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #footer{
@@ -145,7 +145,6 @@ div.users-container{
     left: 0px;
     display: flex;
     justify-content: space-between;
-        
 }
 
 .cart {
@@ -158,11 +157,11 @@ div.users-container{
     font-weight: bold;
     color: #006fb1;
     font-size: 17pt;
-    font-family: 'Times New Roman', Times, serif; 
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #checkout {
-    right:0px;
-    bottom:0px;
-    
-}
+  bottom: 15px;
+  position: relative;
+  top: 15px;
+}*/

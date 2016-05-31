@@ -1,5 +1,13 @@
 <!-- List of Menu items -->
-<template name="menu_items">
+
+<template name="MenuItems">
+  <section>
+    {{#each category}}
+      {{> CategoryItems}}
+    {{/each}}
+  </section>
+</template>
+<!-- <template name="menu_items">
     <div class="container fullsize">
         {{#each category}}
             {{> item_category}}
@@ -25,16 +33,13 @@
         <button class="btn bottom-bar total">
             Total $ {{cost}}
         </button>
-        <button class="btn bottom-bar" id="checkout">
-            Checkout
-        </button>
     </div>
-    
-</template>
+
+</template> -->
 
 
 
-<template name = 'item_category'>
+<!-- <template name = 'item_category'>
     <div>
         <div class="category">
             <img src="little_triangle1.png"
@@ -47,18 +52,17 @@
                     {{> item}}
             {{/each}} {{/if}}
         </div>
-        <!--/col -->
     </div>
-</template>
+</template> -->
 
-<template name = 'item'>
+<!-- <template name = 'item'>
     <div class="card white darken-1 snack-container" id="{{_id}}">
         <div class="card-content snack-btn">
             {{name}}
             <br />
             <p>Price: {{price}}</p>
-            <p>In Stock: {{stock}}</p> 
+            <p>In Stock: {{stock}}</p>
             <a class="waves-effect waves-light btn purchase">Purchase</a>
         </div>
     </div>
-</template>
+</template> -->
