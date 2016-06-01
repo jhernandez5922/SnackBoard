@@ -1,12 +1,19 @@
-Meteor.subscribe("items");
+/*jshint esversion: 6 */
+
 Session.set('cost', 0);
 Session.set('cart', []);
 //Helps set up navbar
 
+
+Template.MenuItems.onCreated(function(){
+  var self = this;
+  self.autorun(function() {
+    self.subscribe("category");
+    self.subscribe("items");
+  });
+});
+
 Template.MenuItems.helpers({
-  items: ()=> {
-    return Menu.find({});
-  },
   category: ()=> {
     return Type.find({});
   }
@@ -15,6 +22,12 @@ Template.MenuItems.helpers({
 Template.CategoryItems.helpers({
   items: (cat)=> {
     return Menu.find({category: cat });
+  }
+});
+
+Template.Item.events({
+  'click': function(event, template) {
+      console.log("Adding " + this.name);
   }
 });
 

@@ -2,9 +2,13 @@
 
 <template name="MenuItems">
   <section>
-    {{#each category}}
-      {{> CategoryItems}}
-    {{/each}}
+    {{#if Template.subscriptionsReady}}
+      {{#each category}}
+        {{> CategoryItems}}
+      {{/each}}
+    {{else}}
+      <p>Loading Items</p>
+    {{/if}}
   </section>
 </template>
 <!-- <template name="menu_items">

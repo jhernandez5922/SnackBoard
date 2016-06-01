@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 FlowRouter.route('/', {
   name: 'home',
   action() {
@@ -21,6 +23,7 @@ FlowRouter.route('/menu', {
     BlazeLayout.render('MainLayout', {main: "MenuItems"});
   }
 });
+
 
 
 // var publicRoutes = FlowRouter.group({

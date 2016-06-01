@@ -16,11 +16,11 @@ MenuSchema = new SimpleSchema({
     label: "Name"
   },
   cost: {
-    type: String,
+    type: Number,
     label: "Cost"
   },
   stock: {
-    type: String,
+    type: Number,
     label: "Stock"
   },
   category: {

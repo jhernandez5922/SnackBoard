@@ -1,8 +1,16 @@
 <template name="CategoryItems">
-  <article class="menu-item">
+  <section class="menu-item">
     <h3>{{name}}</h3>
     {{#each items name}}
-      <button>{{name}}</button>
+      {{> Item}}
     {{/each}}
-  </article>
+  </section>
+</template>
+
+<template name="Item">
+  <div class="item">
+    <h2>{{name}}</h2>
+    <p>Cost: ${{cost}}</p>
+    <p>Stock: {{stock}}</p>
+  </div>
 </template>

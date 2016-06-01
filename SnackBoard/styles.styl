@@ -79,7 +79,7 @@ body
 
 header
     color #FFF
-    background: purp
+    background: bright-blue
     padding 20px
     fixed top left
     width 100%
@@ -263,7 +263,7 @@ input, select, textarea
     height 100px
     width 100%
     overflow hidden
-    background dark-purp
+    background blue
     color #FFF
     z-index: z.header
     shadow-level(2)
@@ -281,7 +281,7 @@ input, select, textarea
         text-align center
         trans()
         &:hover, &.active
-            background purp
+            background bright-blue
     i
         display block
         font-size 2em
@@ -289,7 +289,7 @@ input, select, textarea
     +above($med)
         height 100%
         z-index: z.mid
-        padding 120px 0
+        padding 100px 0
         fixed top left
         width $side-nav
         ul
@@ -389,3 +389,17 @@ input, select, textarea
         left auto
         a
             color dark-purp
+ hr
+       display: block;
+       margin-top: 0.5em;
+       margin-bottom: 0.5em;
+       margin-left: 10px;
+       margin-right: 10px;
+       border-style: inset;
+       border-width: 1px;
+
+#parent #popup
+  display none
+
+#parent:hover #popup
+  display block
