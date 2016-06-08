@@ -96,7 +96,6 @@ header
         a
             color #FFF
             text-decoration none
-
 p
     color #333
 
@@ -148,12 +147,12 @@ p
 .btn, button
     display inline-block
     cursor pointer
-    background purp
+    background blue
     color #FFF
     text-decoration none
     text-transform uppercase
     padding 5px 15px
-    border solid 3px purp
+    border solid 3px blue
     border-radius 2px
     font-weight 800
     shadow-level(1)
@@ -200,7 +199,7 @@ p
         border solid 2px @background
         &:hover
             background @background - 20
-            border-color dark-purp
+            border-color blue
     &.btn-cancel
         color #FFF
         background transparent
@@ -398,8 +397,49 @@ input, select, textarea
        border-style: inset;
        border-width: 1px;
 
-#parent #popup
-  display none
+.left-side
+  float left
+.right-side
+  float right
 
-#parent:hover #popup
-  display block
+.modal-body
+    padding 2px 16px
+    background-color white
+    overflow-y scroll
+    max-height 150px
+
+.modal-header
+  padding 2px 16px
+  background-color white
+  overflow hidden
+  background-color bright-blue
+  color white
+
+.modal-footer
+  @extend .modal-header
+  absolute
+
+.modal-content
+  fixed bottom
+  z-index: z.mini
+  background-color white
+  overflow hidden
+  padding 0
+  width 40%
+  max-width 345px
+  max-height 35%
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  -webkit-animation-name animatetop
+  -webkit-animation-duration 0.4s
+  animation-name animatetop
+  animation-duration 0.4s
+
+@-webkit-keyframes animatetop {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}

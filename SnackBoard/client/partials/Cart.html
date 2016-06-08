@@ -1,0 +1,24 @@
+<template name="Cart">
+  {{#if modalActive}}
+    <footer class="modal-content">
+      <div class="modal-header">
+        <span class="close">x</span>
+        <h2>Current Cart</h2>
+        <div class="modal-body">
+          {{#each cart}}
+            {{> CartItem}}
+          {{/each}}
+        </div>
+      <div class="modal-footer">
+        <h3>Total: ${{total}}</h3>
+        <!-- Add total amount -->
+      </div>
+      </div>
+    </footer>
+  {{/if}}
+</template>
+
+
+<template name="CartItem">
+  <p>{{name}}: {{stock}}</p>
+</template>

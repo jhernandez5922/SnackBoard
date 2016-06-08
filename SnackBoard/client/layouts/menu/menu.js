@@ -14,22 +14,87 @@ Template.MenuItems.onCreated(function(){
 });
 
 Template.MenuItems.helpers({
-  category: ()=> {
+  category: function() {
     return Type.find({});
   }
 });
 
+//CategoryItems template
+Template.CategoryItems.onCreated(function() {
+  this.hidden = new ReactiveVar(false);
+});
+
 Template.CategoryItems.helpers({
-  items: (cat)=> {
+  items: function(cat) {
     return Menu.find({category: cat });
   }
 });
 
-Template.Item.events({
-  'click': function(event, template) {
-      console.log("Adding " + this.name);
+Template.CategoryItems.events({
+  'click .right-side': function(event, template) {
+    if (!this.hidden) {
+      template.$(".item").css('display', 'none');
+      $(event.target).text('Show');
+    } else {
+      template.$(".item").css('display', 'block');
+      $(event.target).text('Hide');
+    }
+    this.hidden = !this.hidden;
   }
 });
+
+
+Template.Item.onCreated(function(){
+    this.editMode = new ReactiveVar(false);
+});
+
+Template.Item.helpers({
+  editMode: function() {
+    return this.editMode;
+  }
+});
+Template.Item.events({
+  'click .btn-confirmation': function(event, template) {
+      console.log("Adding " + this.name);
+      var cart = Session.get('cart');
+      if (cart.length === 0) {
+        cart.push({
+            name: this.name,
+            cost: this.cost,
+            stock: 1
+        });
+      }
+      else {
+        for (var i = 0; i < cart.length; i++) {
+          if (cart[i].name == this.name) {
+              cart[i].stock += 1;
+              break;
+          }
+          else if (i + 1 == cart.length) {
+              cart.push({
+                  name: this.name,
+                  cost: this.cost,
+                  stock: 1
+              });
+              break;
+          }
+      }
+    }
+    Session.set('cart', cart);
+    console.log(cart);
+    Session.set('cost', this.cost + Session.get('cost'));
+    console.log(Session.get('cost'));
+  },
+  'click .btn-primary': function(event, template) {
+      console.log("Enter editing mode");
+      this.editMode = !this.editMode;
+  },
+  'click .btn-deny': function(event, template) {
+      console.log("Removing " + this.name);
+      Menu.remove({'_id': this._id});
+  }
+});
+
 
 // Template.registerHelper('groupRoutes', function () {
 //     FlowRouter.watchPathChange();

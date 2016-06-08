@@ -1,6 +1,9 @@
 <template name="CategoryItems">
   <section class="menu-item">
-    <h3>{{name}}</h3>
+    <h3>
+      {{name}}
+      <span class="right-side"> <a href="">Hide</a></span>
+   </h3>
     {{#each items name}}
       {{> Item}}
     {{/each}}
@@ -9,8 +12,18 @@
 
 <template name="Item">
   <div class="item">
-    <h2>{{name}}</h2>
-    <p>Cost: ${{cost}}</p>
-    <p>Stock: {{stock}}</p>
+    {{#if editMode}}
+        <form>
+            <input type="text" name="name" placeholder="Item Name" required />
+            <button type="submit">Submit</button>
+        </form>
+    {{else}}
+      <h2 class="name-text">{{name}}</h2>
+      <p class="cost-text">Cost: ${{cost}}</p>
+      <p class="stock-text">Stock: {{stock}}</p>
+    {{/if}}
+    <button class="btn-confirmation">Purchase</button>
+    <button class="btn-primary">Edit Values</button>
+    <button class="btn-deny">Remove</button>
   </div>
 </template>

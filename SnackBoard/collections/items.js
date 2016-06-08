@@ -5,7 +5,8 @@ Menu = new Mongo.Collection('items');
 Menu.allow({
   insert: function(userId, doc) {
     return !!userId;
-  }
+  },
+  remove: function() {return true;}
 });
 
 
@@ -17,6 +18,7 @@ MenuSchema = new SimpleSchema({
   },
   cost: {
     type: Number,
+    decimal: true,
     label: "Cost"
   },
   stock: {
