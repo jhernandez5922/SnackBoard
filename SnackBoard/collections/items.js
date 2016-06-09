@@ -6,7 +6,10 @@ Menu.allow({
   insert: function(userId, doc) {
     return !!userId;
   },
-  remove: function() {return true;}
+  remove: function() {return true;},
+  update: function(userId, doc) {
+    return true;
+  }
 });
 
 
@@ -37,5 +40,6 @@ MenuSchema = new SimpleSchema({
     }
   }
 });
+
 
 Menu.attachSchema(MenuSchema);

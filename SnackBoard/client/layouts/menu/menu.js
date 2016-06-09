@@ -14,6 +14,7 @@ Template.MenuItems.onCreated(function(){
 });
 
 Template.MenuItems.helpers({
+  //Returns categories
   category: function() {
     return Type.find({});
   }
@@ -21,16 +22,19 @@ Template.MenuItems.helpers({
 
 //CategoryItems template
 Template.CategoryItems.onCreated(function() {
+  //For each catgeory, checks if items are hidden
   this.hidden = new ReactiveVar(false);
 });
 
 Template.CategoryItems.helpers({
+  //get all items of a category
   items: function(cat) {
     return Menu.find({category: cat });
   }
 });
 
 Template.CategoryItems.events({
+  //toggles items from being visible
   'click .right-side': function(event, template) {
     if (!this.hidden) {
       template.$(".item").css('display', 'none');
@@ -45,15 +49,17 @@ Template.CategoryItems.events({
 
 
 Template.Item.onCreated(function(){
+    //whether or not the admin is editing the values
     this.editMode = new ReactiveVar(false);
 });
 
 Template.Item.helpers({
-  editMode: function() {
-    return this.editMode;
+  editMode: function(template) {
+    return Template.instance().editMode.get();
   }
 });
 Template.Item.events({
+  //purchase item
   'click .btn-confirmation': function(event, template) {
       console.log("Adding " + this.name);
       var cart = Session.get('cart');
@@ -85,10 +91,13 @@ Template.Item.events({
     Session.set('cost', this.cost + Session.get('cost'));
     console.log(Session.get('cost'));
   },
+  //edit values (Admin Only)
   'click .btn-primary': function(event, template) {
-      console.log("Enter editing mode");
-      this.editMode = !this.editMode;
+      var editMode = template.editMode.get();
+      console.log("Enter editing mode: " + editMode);
+      template.editMode.set(!editMode);
   },
+  //remove item (Admin Only)
   'click .btn-deny': function(event, template) {
       console.log("Removing " + this.name);
       Menu.remove({'_id': this._id});
@@ -154,53 +163,5 @@ Template.Item.events({
 //                 "transform": "rotate(-90deg)"});
 //                 template.$('.snackbar').css({"overflow-x": "hidden"});
 //         }
-//     }
-// };
-// Template.item.events = {
-//     'click .purchase': function(event, template) {
-//         //Add to cart
-//         console.log(this.name);
-//         console.log(this.price);
-//         console.log(this.stock);
-//         var cart = Session.get('cart');
-//         if (cart.length === 0) {
-//             cart.push({
-//                 name: this.name,
-//                 price: this.price,
-//                 stock: 1
-//             });
-//             $('.cart').css({
-//                     "border-width": "3px",
-//                     "border-style": "groove",
-//                     "border-color": "black",
-//                     "overflow-y": "scroll"
-//             });
-//         }
-//         else {
-//             for (var i = 0; i < cart.length; i++) {
-//                 if (cart[i].name == this.name) {
-//                     cart[i].stock += 1;
-//                     break;
-//                 }
-//                 else if (i + 1 == cart.length) {
-//                     cart.push({
-//                         name: this.name,
-//                         price: this.price,
-//                         stock: 1
-//                     });
-//                     break;
-//                 }
-//             }
-//         }
-//         Session.set('cart', cart);
-//         console.log(cart);
-//         var currency = Session.get('cost');
-//         var currencyString = JSON.stringify(currency);
-//         var number = Number(currencyString.replace(/[^0-9\.]+/g,""));
-//
-//         var current = Number(this.price.replace(/[^0-9\.]+/g,""));
-//
-//         Session.set('cost', (current + number).toFixed(2));
-//         console.log(Session.get('cost'));
 //     }
 // };

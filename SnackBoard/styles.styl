@@ -309,7 +309,9 @@ input, select, textarea
     background #FFF
     padding 0 20px 20px
     margin-bottom 20px
+    float left
     position relative
+    width 50%
     z-index 1
     shadow-level(1)
     trans()
@@ -369,6 +371,7 @@ input, select, textarea
 
 .menu-item
     @extend .item
+    width 100%
 
 .shopping-list
     @extend .item
@@ -402,18 +405,22 @@ input, select, textarea
 .right-side
   float right
 
+.container
+    width 100%
+
 .modal-body
     padding 2px 16px
     background-color white
     overflow-y scroll
+    color blue
+    shadow-level(1)
     max-height 150px
 
 .modal-header
-  padding 2px 16px
+  padding 2px 10px
   background-color white
+  color bright-blue
   overflow hidden
-  background-color bright-blue
-  color white
 
 .modal-footer
   @extend .modal-header
@@ -422,6 +429,7 @@ input, select, textarea
 .modal-content
   fixed bottom
   z-index: z.mini
+  shadow-level(3)
   background-color white
   overflow hidden
   padding 0
@@ -433,6 +441,9 @@ input, select, textarea
   -webkit-animation-duration 0.4s
   animation-name animatetop
   animation-duration 0.4s
+
+.close
+  fixed top right
 
 @-webkit-keyframes animatetop {
     from {bottom: -300px; opacity: 0}

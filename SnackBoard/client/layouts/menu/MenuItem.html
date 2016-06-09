@@ -4,23 +4,28 @@
       {{name}}
       <span class="right-side"> <a href="">Hide</a></span>
    </h3>
-    {{#each items name}}
-      {{> Item}}
-    {{/each}}
+   <div class="container">
+     {{#each items name}}
+       {{> Item}}
+     {{/each}}
+   </div>
   </section>
 </template>
 
 <template name="Item">
   <div class="item">
     {{#if editMode}}
-        <form>
-            <input type="text" name="name" placeholder="Item Name" required />
-            <button type="submit">Submit</button>
-        </form>
+          {{> quickForm
+            collection="Menu"
+            id="updateMenuItem"
+            type="update"
+            doc=this
+            class="new-item"
+          }}
     {{else}}
       <h2 class="name-text">{{name}}</h2>
-      <p class="cost-text">Cost: ${{cost}}</p>
-      <p class="stock-text">Stock: {{stock}}</p>
+      <p>Cost: <span class="cost-text">${{cost}}</span></p>
+      <p>Stock: <span class="stock-text">{{stock}}</span></p>
     {{/if}}
     <button class="btn-confirmation">Purchase</button>
     <button class="btn-primary">Edit Values</button>
