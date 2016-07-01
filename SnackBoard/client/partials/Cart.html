@@ -10,8 +10,11 @@
           {{/each}}
         </div>
       <div class="modal-footer">
-        <h3>Total: ${{total}}</h3>
-        <!-- Add total amount -->
+        <h3>
+          Total: ${{total}}
+          <button class="checkout-btn" style="float: right;">Checkout</button>
+        </h3>
+
       </div>
       </div>
     </footer>
@@ -20,5 +23,9 @@
 
 
 <template name="CartItem">
-  <p class="item">{{name}}: <input class="item-counter" type="number" value={{stock}}></p>
+  <h3 class="shopping-list">
+    {{name}}:
+    <span class="right-side"> <a href="">X</a></span>
+    <input class="item-counter" type="number" value={{stock}}>
+  </h3>
 </template>

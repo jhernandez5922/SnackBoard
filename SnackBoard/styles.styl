@@ -84,6 +84,7 @@ header
     fixed top left
     width 100%
     height 70px
+    min-width 500px
     z-index: z.header
     shadow-level(2)
     clearfix()
@@ -116,6 +117,7 @@ p
 .main-layout
     lost-center 90%
     margin-top 20px
+    min-width 500px
     +above($med)
         lost-center 90%
         padding-left $side-nav
@@ -226,9 +228,23 @@ input, select, textarea
         border none
         background transparent
 
-.list-group
+.checkout-btn
+    display inline-block
+    cursor pointer
+    border solid 2px #FFF
+    text-decoration none
+    text-transform capitalize
+    font-weight 600
+    trans()
     list-style none
-    padding 0
+    padding 0px 10px
+    color bright-blue
+    background transparent
+    shadow-level(2)
+    &:hover
+        color blue
+        background transparent
+        border solid 2px blue
 
 .panel-body
     .form-group
@@ -375,15 +391,21 @@ input, select, textarea
 
 .shopping-list
     @extend .item
-    padding 50px 5%
+    width 100%
+    height 100%
+    line-height 100%
+    float left
+    padding 0px 5%
     list-style none
-    li
-        font-size 2em
-        padding 20px
-        border-bottom 1px solid light-grey
-        border-top 1px solid light-grey
-        & + li
-            border-top none
+    margin-bottom 5px
+    text-color bright-blue
+
+.item-counter
+    width 30%
+    height 30%
+    padding 0px 0px
+    margin-right: 15%
+    float right
 
 .login-buttons-dropdown-align-
     #login-dropdown-list
@@ -414,7 +436,7 @@ input, select, textarea
     overflow-y scroll
     color blue
     shadow-level(1)
-    max-height 150px
+    max-height 125px
 
 .modal-header
   padding 2px 10px
@@ -427,7 +449,7 @@ input, select, textarea
   absolute
 
 .modal-content
-  fixed bottom
+  fixed bottom right
   z-index: z.mini
   shadow-level(3)
   background-color white
@@ -435,22 +457,24 @@ input, select, textarea
   padding 0
   width 40%
   max-width 345px
-  max-height 35%
+  min-width 200px
+  max-height 40%
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
   -webkit-animation-name animatetop
   -webkit-animation-duration 0.4s
   animation-name animatetop
   animation-duration 0.4s
+  border-style: inset;
+  border-width: 1px;
 
 .close
   fixed top right
 
-@-webkit-keyframes animatetop {
+@-webkit-keyframes animatetop
     from {bottom: -300px; opacity: 0}
     to {bottom: 0; opacity: 1}
-}
 
-@keyframes animatetop {
+
+@keyframes animatetop
     from {bottom: -300px; opacity: 0}
     to {bottom: 0; opacity: 1}
-}
