@@ -1,0 +1,16 @@
+<template name="Modal">
+  {{#if get 'active'}}
+  <footer class="modal-content">
+    <div class="modal-header">
+      <a id="close" class="right-side">X</a>
+      <h2>{{get 'title'}}</h2>
+      <div class="modal-body">
+        {{> Template.dynamic template=(get 'contentTemplate')}}
+      </div>
+      <div class="modal-footer">
+        {{> Template.dynamic template=(get 'footerTemplate')}}
+      </div>
+    </div>
+  </footer>
+  {{/if}}
+</template>

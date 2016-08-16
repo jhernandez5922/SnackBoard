@@ -3,8 +3,7 @@
 FlowRouter.route('/', {
   name: 'home',
   action() {
-    GAnalytics.pageview();
-    BlazeLayout.render("HomeLayout");
+    BlazeLayout.render('MainLayout', {main: "MenuItems"});
   }
 });
 
@@ -24,7 +23,12 @@ FlowRouter.route('/menu', {
   }
 });
 
-
+FlowRouter.route('/checkout', {
+  name: 'checkout',
+  action(){
+    BlazeLayout.render('MainLayout', {main: "Checkout"})
+  }
+})
 
 // var publicRoutes = FlowRouter.group({
 //   name: 'public',

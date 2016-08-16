@@ -2,6 +2,7 @@
 
 Session.set('cost', 0);
 Session.set('cart', []);
+Session.set('modal', {active: false});
 //Helps set up navbar
 
 

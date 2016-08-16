@@ -1,0 +1,13 @@
+<template name="CategoryItems">
+  <section class="menu-item">
+    <h3>
+      {{name}}
+      <span class="right-side"> <a href="">Hide</a></span>
+   </h3>
+   <div class="container">
+     {{#each items name}}
+       {{> Item}}
+     {{/each}}
+   </div>
+  </section>
+</template>

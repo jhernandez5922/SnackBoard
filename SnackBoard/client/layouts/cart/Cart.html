@@ -1,0 +1,20 @@
+<template name="Cart">
+  {{#each cart}}
+    {{> CartItem}}
+  {{/each}}
+</template>
+
+<template name="CartItem">
+  <h3 class="shopping-list">
+    {{name}}:
+    <span class="right-side"> <a href="">X</a></span>
+    <input class="item-counter" type="number" value={{stock}}>
+  </h3>
+</template>
+
+<template name="CartFooter">
+  <h3>
+    Total: ${{cost}}
+    <button class="checkout-btn" style="float: right;">Checkout</button>
+  </h3>
+</template>

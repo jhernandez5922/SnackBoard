@@ -5,10 +5,14 @@ Template.Cart.helpers({
   cart: function() {
     return Session.get('cart');
   },
-  total: function() {
-    return Session.get('cost');
-  },
 });
+
+Template.CartFooter.helpers({
+  cost: function() {
+    return Session.get('cost');
+  }
+})
+
 
 Template.Cart.events({
   //Need a better way to recalculate price after change
