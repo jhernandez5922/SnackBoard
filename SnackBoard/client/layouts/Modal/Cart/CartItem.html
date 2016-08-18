@@ -1,0 +1,12 @@
+<template name="CartItem">
+  <h3 class="shopping-list">
+    {{name}}:
+    <span id="removeItem" class="right-side"> <a href="">X</a></span>
+    <select id="purchaseQuantity" class="item-counter">
+      <option disabled="disabled" selected="selected">{{stock}}</option>
+          {{#each inStock name}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+    </select>
+  </h3>
+</template>

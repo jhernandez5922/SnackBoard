@@ -1,5 +1,5 @@
 Template.SideNav.events({
-  'click .cart': function(){
+  'click #cart': function(){
       var modal = {};
       modal.active = true;
       modal.title = "Current Cart";
@@ -8,7 +8,7 @@ Template.SideNav.events({
       console.log("Modal is now: " + modal);
       Session.set('modal', modal);
   },
-  'click .login': function() {
+  'click #login': function() {
     var modal = {};
     modal.active = true;
     modal.title = "Admin Login";

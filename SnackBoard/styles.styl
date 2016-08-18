@@ -228,6 +228,14 @@ input, select, textarea
         border none
         background transparent
 
+.checkout-title
+  font-size: 3em;
+  color bright-blue
+  border-bottom: bright-blue solid 3px
+  padding 5px 0px
+  margin-top 0
+  margin-bottom 10px
+
 .checkout-btn
     display inline-block
     cursor pointer
@@ -241,10 +249,17 @@ input, select, textarea
     color bright-blue
     background transparent
     shadow-level(2)
+    float right
     &:hover
         color blue
         background transparent
-        border solid 2px blue
+        border solid 2px bright-blue
+
+.checkout-btn-dark
+  @extend .checkout-btn
+  color blue
+  &:hover
+      color bright-blue
 
 .panel-body
     .form-group
@@ -344,8 +359,9 @@ input, select, textarea
             display block
     h3
         font-size: 3em;
-        opacity: 0.3;
-        border-bottom: rgba(0,0,0, 0.3) solid 3px
+        color blue
+        border-bottom: blue solid 3px
+        padding 5px 0px
         margin-top 0
         margin-bottom 10px
     button
@@ -388,6 +404,8 @@ input, select, textarea
 .menu-item
     @extend .item
     width 100%
+    &:hover
+      shadow-level(1)
 
 .shopping-list
     @extend .item
@@ -428,6 +446,7 @@ input, select, textarea
   float right
 
 .container
+    background #FFF
     width 100%
 
 .modal-body
@@ -475,3 +494,13 @@ input, select, textarea
 @keyframes animatetop
     from {bottom: -300px; opacity: 0}
     to {bottom: 0; opacity: 1}
+
+
+.checkout-container
+  @extend .item
+  width 100%
+  display table
+
+.third
+  width 33%
+  display table-cell

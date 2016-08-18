@@ -1,0 +1,19 @@
+<template name="Checkout">
+  <div class="menu-item">
+    <h1 class="checkout-title">Checkout Items</h1>
+    {{#if isCartEmpty}}
+        <h2>Your cart is empty, go buy something!</h2>
+    {{else}}
+      {{#each cart name}}
+        {{> CheckoutItem}}
+      {{/each}}
+    {{/if}}
+    <footer>
+      <h1 class="checkout-title">
+        Total: ${{total}}
+        <span class="checkout-btn-dark">Purchase</span>
+      </h1>
+    </footer>
+  </div>
+
+</template>

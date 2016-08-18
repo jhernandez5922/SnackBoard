@@ -1,0 +1,12 @@
+<!-- List of Menu items -->
+<template name="Menu">
+  <section>
+    {{#if Template.subscriptionsReady}}
+      {{#each category}}
+        {{> Category}}
+      {{/each}}
+    {{else}}
+      <p>Loading Items</p>
+    {{/if}}
+  </section>
+</template>

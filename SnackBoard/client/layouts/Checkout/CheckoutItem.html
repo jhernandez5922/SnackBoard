@@ -1,0 +1,13 @@
+<template name="CheckoutItem">
+  <div class="checkout-container">
+      <h1 class="third">{{name}}</h1>
+      <h1 class="third">${{cost}}</h1>
+      <span class="right-side" id="removeItem"> <a href="">X</a></span>
+      <select id="purchaseQuantity">
+        <option disabled="disabled" selected="selected">{{stock}}</option>
+            {{#each inStock name}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+      </select>
+  </div>
+</template>

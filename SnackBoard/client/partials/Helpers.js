@@ -1,22 +1,16 @@
-Template.Cart.helpers({
-  modalActive: function() {
-    return Session.get('modalActive');
-  },
-  cart: function() {
-    return Session.get('cart');
-  },
-});
+Template.registerHelper('inStock', (item) => {
+  var purchasedItem = Menu.find({}).fetch()[0]
+  console.log(item)
+  console.log(purchasedItem)
+  var array = ([...Array(purchasedItem.stock+1).keys()].slice(1))
+  console.log(purchasedItem.stock);
+  console.log(array);
+  return array;
+} )
 
-Template.CartFooter.helpers({
-  cost: function() {
-    return Session.get('cost');
-  }
-})
-
-
-Template.Cart.events({
+Template.MainLayout.events({
   //Need a better way to recalculate price after change
-  'input .item-counter': function(event) {
+  'input #purchaseQuantity': function(event) {
     var cost = 0;
     var cart = Session.get('cart');
     console.log(cart);
@@ -35,7 +29,7 @@ Template.Cart.events({
     console.log(cost);
     Session.set('cart', cart);
   },
-  'click .right-side': function(event) {
+  'click #removeItem': function() {
     var cart = Session.get('cart');
     var cost = Session.get('cost');
     console.log(cart);
@@ -48,4 +42,4 @@ Template.Cart.events({
     Session.set('cost', cost);
     Session.set('cart', cart);
   }
-});
+})

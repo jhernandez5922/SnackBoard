@@ -3,7 +3,7 @@
 FlowRouter.route('/', {
   name: 'home',
   action() {
-    BlazeLayout.render('MainLayout', {main: "MenuItems"});
+    BlazeLayout.render('MainLayout', {main: "Menu"});
   }
 });
 
@@ -19,7 +19,7 @@ FlowRouter.route('/add-item', {
 FlowRouter.route('/menu', {
   name: 'menu',
   action() {
-    BlazeLayout.render('MainLayout', {main: "MenuItems"});
+    BlazeLayout.render('MainLayout', {main: "Menu"});
   }
 });
 
